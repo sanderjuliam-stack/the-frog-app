@@ -1,13 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <meta charset="UTF-8" />
-  <title>Frog App</title>
-</head>
-<body>
-  <h1>🐸 Frog App</h1>
-  <button id="btn">Clique</button>
-
-  <script src="renderer.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>The Frog App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🐸 Frog App</h1>
+      <button id="close-window">Fechar</button>
+      <div class="animation-container"></div>
+      <button class="btn">
+        <img src="" alt="add task" />
+      </button>
+      <button class="btn">
+        <img src="" alt="edit tasks" />
+      </button>
+    </header>
+    <main class="task-list">
+      <article class="task-container">
+        <label for="task-checkbox">
+          <img src="" alt="" />
+        </label>
+        <input type="checkbox" id="task-checkbox" hidden />
+        <input type="text" id="text-input" hidden maxlength="30" />
+        <button id="delete">
+          <img src="" alt="delete task" />
+        </button>
+      </article>
+    </main>
+    <script src="renderer.js"></script>
+  </body>
 </html>

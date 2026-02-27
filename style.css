@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+:root {
+  --primary-color: #4f6f52;
+  --secondary-color: #1e2a23;
+  --terciary-color: #333333;
+  --text-color: #e6efe8;
+}
+
+body {
+  -webkit-app-region: drag;
+  height: 480px;
+  background-color: var(--primary-color);
+}
+
+button,
+input {
+  display: block;
+  -webkit-app-region: no-drag;
+  user-select: auto;
+}

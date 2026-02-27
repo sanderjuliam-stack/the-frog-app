@@ -1,3 +1,3 @@
-document.getElementById("btn").addEventListener("click", () => {
-  alert("Funcionando!");
-});
+document.getElementById("close-window").addEventListener("click", () => {
+  window.api.encerrarApp();
+})

@@ -1,5 +1,5 @@
-const { contextBridge } = require("electron");
+const { contextBridge, ipcRenderer} = require("electron");
 
 contextBridge.exposeInMainWorld("api", {
-  hello: () => "Olá, Mundo",
+  encerrarApp: () => ipcRenderer.send("fechar-janela"),
 });
