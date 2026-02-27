@@ -8,26 +8,34 @@
   <body>
     <header>
       <h1>🐸 Frog App</h1>
-      <button id="close-window">Fechar</button>
-      <div class="animation-container"></div>
-      <button class="btn">
-        <img src="" alt="add task" />
-      </button>
-      <button class="btn">
-        <img src="" alt="edit tasks" />
+      <button id="close-window">
+        <img src="img/close-window.png" alt="close window" />
       </button>
     </header>
-    <main class="task-list">
-      <article class="task-container">
-        <label for="task-checkbox">
-          <img src="" alt="" />
-        </label>
-        <input type="checkbox" id="task-checkbox" hidden />
-        <input type="text" id="text-input" hidden maxlength="30" />
-        <button id="delete">
-          <img src="" alt="delete task" />
-        </button>
-      </article>
+    <main>
+      <section class="menu">
+        <div class="animation-container"></div>
+        <div class="buttons-container">
+          <button class="btn">
+            <img src="img/plus-icon.png" alt="add task" />
+          </button>
+          <button class="btn">
+            <img src="img/edit-icon.png" alt="edit tasks" />
+          </button>
+        </div>
+      </section>
+      <section class="task-list">
+        <article class="task-container">
+          <label for="task-checkbox">
+            <img src="" alt="" />
+          </label>
+          <input type="checkbox" id="task-checkbox" hidden />
+          <input type="text" id="text-input" hidden maxlength="30" />
+          <button id="delete">
+            <img src="" alt="delete task" />
+          </button>
+        </article>
+      </section>
     </main>
     <script src="renderer.js"></script>
   </body>
