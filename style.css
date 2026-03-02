@@ -13,9 +13,15 @@
   --text-color: #e6efe8;
 }
 
+@font-face {
+  font-family: "Nunito sans";
+  src: url(font/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf);
+}
+
 body {
   height: 480px;
   background-color: var(--primary-color);
+  font-family: "Nunito sans";
 }
 
 header {
@@ -24,16 +30,16 @@ header {
   position: relative;
 }
 
-#close-window {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
 h1 {
   color: var(--text-color);
   font-size: 32px;
   text-align: center;
+}
+
+#close-window {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .animation-container {
@@ -72,4 +78,28 @@ input {
   height: 60px;
   border-radius: 16px;
   background-color: var(--task-color);
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
+.checkbox-container {
+  position: relative;
+}
+
+input[type="checkbox"] {
+  width: 50px;
+  height: 50px;
+  appearance: none;
+}
+
+label[for="task-checkbox"] {
+  position: absolute;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--secondary-color);
+  border-radius: 8px;
+}
+

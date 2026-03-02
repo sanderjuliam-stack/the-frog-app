@@ -18,9 +18,13 @@ function createWindow() {
   win.loadFile("index.html");
 }
 
-ipcMain.on("fechar-janela", () => {
+// COMANDOS
+ipcMain.on("encerra-app", () => {
   app.quit();
 });
+ipcMain.on("adiciona-task", () => {
+  
+})
 
 app.whenReady().then(() => {
   createWindow();
@@ -32,4 +36,4 @@ app.whenReady().then(() => {
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
-});
+})

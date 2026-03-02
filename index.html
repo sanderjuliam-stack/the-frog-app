@@ -16,25 +16,31 @@
       <section class="menu">
         <div class="animation-container"></div>
         <div class="buttons-container">
-          <button class="btn">
+          <button class="btn" id="btn-add-task">
             <img src="img/plus-icon.png" alt="add task" />
           </button>
-          <button class="btn">
+          <button class="btn" id="btn-edit-task">
             <img src="img/edit-icon.png" alt="edit tasks" />
           </button>
         </div>
       </section>
       <section class="task-list">
-        <article class="task-container">
-          <label for="task-checkbox">
-            <img src="" alt="" />
-          </label>
-          <input type="checkbox" id="task-checkbox" hidden />
-          <input type="text" id="text-input" hidden maxlength="30" />
-          <button id="delete">
-            <img src="" alt="delete task" />
-          </button>
-        </article>
+        <ul>
+          <li>
+            <article class="task-container">
+              <div class="checkbox-container">
+                <label for="task-checkbox">
+                  <img src="" alt="" />
+                </label>
+                <input type="checkbox" id="task-checkbox" hidden />
+              </div>
+              <input type="text" id="text-input" hidden maxlength="30" />
+              <button id="delete">
+                <img src="img/delete-icon.png" alt="delete task" />
+              </button>
+            </article>
+          </li>
+        </ul>
       </section>
     </main>
     <script src="renderer.js"></script>
