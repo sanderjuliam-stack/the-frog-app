@@ -1,6 +1,5 @@
 const { contextBridge, ipcRenderer} = require("electron");
 
 contextBridge.exposeInMainWorld("api", {
-  encerrarApp: () => ipcRenderer.send("encerra-app"),
-  adicionaTask: () => ipcRenderer.send("adiciona-task")
+  encerrarApp: () => ipcRenderer.send("encerra-app")
 });

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>The Frog App</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="renderer.js" defer></script>
   </head>
   <body>
     <header>
@@ -11,38 +12,31 @@
       <button id="close-window">
         <img src="img/close-window.png" alt="close window" />
       </button>
+      <div class="animation-container"></div>
     </header>
     <main>
-      <section class="menu">
-        <div class="animation-container"></div>
-        <div class="buttons-container">
-          <button class="btn" id="btn-add-task">
-            <img src="img/plus-icon.png" alt="add task" />
-          </button>
-          <button class="btn" id="btn-edit-task">
-            <img src="img/edit-icon.png" alt="edit tasks" />
-          </button>
-        </div>
-      </section>
-      <section class="task-list">
-        <ul>
-          <li>
-            <article class="task-container">
+      <div class="input-container">
+        <input type="text" id="input-task" placeholder="..." />
+        <button class="btn" id="btn-add">
+          <img src="img/plus-icon.png" alt="add task" />
+        </button>
+      </div>
+      <div class="list-container">
+        <ul id="task-list">
+        </ul>
+      </div>
+        <!-- <div class="task-container">
+            <li>
               <div class="checkbox-container">
-                <input type="checkbox" id="task-checkbox" />
-                <label for="task-checkbox">
+                <input type="checkbox" id="${taskId}" />
+                <label for="${taskId}" class="label-task">
                   <img src="img/check.png" alt="checked" />
                 </label>
               </div>
-              <input type="text" id="text-input" hidden maxlength="30" />
-              <button id="delete">
+              <input type="text" class="text-input" hidden maxlength="15" />
+              <button class="btn-delete">
                 <img src="img/delete-icon.png" alt="delete task" />
-              </button>
-            </article>
-          </li>
-        </ul>
-      </section>
+              </button>  -->
     </main>
-    <script src="renderer.js"></script>
   </body>
 </html>

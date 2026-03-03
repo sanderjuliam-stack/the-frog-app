@@ -45,7 +45,7 @@ h1 {
 .animation-container {
   height: 180px;
   width: 300px;
-  margin: 8px auto;
+  margin: 10px auto;
   border-radius: 16px;
   background-color: #333333;
 }
@@ -59,33 +59,43 @@ input {
   border: none;
 }
 
-.buttons-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 5px 10px;
+ul {
+  list-style: none;
 }
 
-.task-list {
+.list-container {
+  overflow-y: auto;
   display: flex;
-  /* flex-direction: column; */
-  justify-content: center;
-  column-gap: 5px;
+  flex-direction: column;
+  align-items: center;
 }
 
-.task-container {
+.task-container li {
   width: 300px;
   height: 60px;
   border-radius: 16px;
   background-color: var(--task-color);
   padding: 5px;
+  margin-bottom: 5px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
+/* .task-container {
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+} */
+/* .task-container input[type="checkbox"]:checked ~ .text-input {
+  text-decoration: line-through;
+  opacity: 0.6;
+} */
 .checkbox-container {
   position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
 }
 
 input[type="checkbox"] {
@@ -95,7 +105,7 @@ input[type="checkbox"] {
   position: absolute;
 }
 
-label[for="task-checkbox"] {
+.label-task {
   display: inline-block;
   width: 50px;
   height: 50px;
@@ -105,7 +115,7 @@ label[for="task-checkbox"] {
 
 /* animação checked */
 
-label[for="task-checkbox"] img {
+.label-task img {
   width: 100%;
   height: 100%;
   transform: scale(0);
@@ -113,6 +123,30 @@ label[for="task-checkbox"] img {
   pointer-events: none;
 }
 
-input[type="checkbox"]:checked + label[for="task-checkbox"] img {
+input[type="checkbox"]:checked + .label-task img {
   transform: scale(1);
 }
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 10px;
+}
+
+#input-task {
+  outline: none;
+  width: 248px;
+  height: 50px;
+  font-family: "Nunito sans";
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--terciary-color);
+  background-color: var(--task-color);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+/* input[type="checkbox"]:checked + input[type="text"] {
+  text-decoration: line-through;
+} */

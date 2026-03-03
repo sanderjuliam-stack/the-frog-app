@@ -18,13 +18,9 @@ function createWindow() {
   win.loadFile("index.html");
 }
 
-// COMANDOS
 ipcMain.on("encerra-app", () => {
   app.quit();
 });
-ipcMain.on("adiciona-task", () => {
-  
-})
 
 app.whenReady().then(() => {
   createWindow();
