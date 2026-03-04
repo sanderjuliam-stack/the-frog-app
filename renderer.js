@@ -26,9 +26,10 @@ function addTask () {
     if (newTask !== '') {
         froggyToDo.push({
             text: newTask,
-            checked: false
+            check: false
         });
         saveInLocalStorage();
+        inputTask.value = "";
         displayTasks();
     }
 };
@@ -39,9 +40,9 @@ function displayTasks() {
         const taskContainer = document.createElement('li');
         taskContainer.className = 'task-container';
         taskContainer.innerHTML = 
-        `<li>
+        `
             <div class="checkbox-container">
-                <input type="checkbox" class= 'input-checkbox'id='input-${index}' ${item.check ? checked : ''} 
+                <input type="checkbox" class='input-checkbox' id='input-${index}' ${item.check ? 'checked' : ''} />
                 <label for="input-${index}" class="label-task">
                     <img src="img/check.png" alt="checked" />
                 </label>            
@@ -50,7 +51,7 @@ function displayTasks() {
             <button class="btn-delete" onclick="deleteTask(${index})">
                 <img src="img/delete-icon.png" alt="delete task" />
             </button>
-        </li>`;
+        `;
         taskContainer.querySelector(".input-checkbox").addEventListener('change', () => {
             toggleTask(index);
         })
@@ -62,6 +63,7 @@ function editTask(index) {
   const taskToEdit = document.getElementById(`p-${index}`);
   const existingText = froggyToDo[index].text;
   const inputElement = document.createElement("input");
+  inputElement.className = 'input-element';
 
   inputElement.value = existingText;
   taskToEdit.replaceWith(inputElement);
@@ -70,7 +72,7 @@ function editTask(index) {
   inputElement.addEventListener("blur", function () {
     const updatedText = inputElement.value.trim();
     if (updatedText) {
-      todo[index].text = updatedText;
+      froggyToDo[index].text = updatedText;
       saveInLocalStorage();
     }
     displayTasks();
@@ -84,7 +86,7 @@ function deleteTask(index) {
 };
 
 function toggleTask(index) {
-    froggyToDo[index].check = !froggyToDo[index];
+    froggyToDo[index].check = !froggyToDo[index].check;
     saveInLocalStorage();
     displayTasks();
 };

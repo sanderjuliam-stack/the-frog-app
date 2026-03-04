@@ -59,75 +59,7 @@ input {
   border: none;
 }
 
-ul {
-  list-style: none;
-}
-
-.list-container {
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.task-container li {
-  width: 300px;
-  height: 60px;
-  border-radius: 16px;
-  background-color: var(--task-color);
-  padding: 5px;
-  margin-bottom: 5px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-/* .task-container {
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
-} */
-/* .task-container input[type="checkbox"]:checked ~ .text-input {
-  text-decoration: line-through;
-  opacity: 0.6;
-} */
-.checkbox-container {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-}
-
-input[type="checkbox"] {
-  width: 50px;
-  height: 50px;
-  appearance: none;
-  position: absolute;
-}
-
-.label-task {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  border: 3px solid var(--secondary-color);
-  border-radius: 8px;
-}
-
-/* animação checked */
-
-.label-task img {
-  width: 100%;
-  height: 100%;
-  transform: scale(0);
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  pointer-events: none;
-}
-
-input[type="checkbox"]:checked + .label-task img {
-  transform: scale(1);
-}
-
-.input-container {
+.add-task-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -147,6 +79,75 @@ input[type="checkbox"]:checked + .label-task img {
   padding: 4px;
 }
 
-/* input[type="checkbox"]:checked + input[type="text"] {
+ul {
+  list-style: none;
+}
+
+.list-container {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.task-container {
+  width: 300px;
+  height: 60px;
+  border-radius: 16px;
+  background-color: var(--task-color);
+  padding: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* transition:
+    opacity 0.3s ease,
+    transform 0.3s ease; */
+}
+
+.checkbox-container {
+  width: 50px;
+  height: 50px;
+}
+
+.input-checkbox {
+  width: 50px;
+  height: 50px;
+  appearance: none;
+  position: absolute;
+}
+
+.label-task {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--secondary-color);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.label-task img {
+  width: 48px;
+  height: 48px;
+  transform: scale(0);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.input-checkbox:checked + .label-task img {
+  transform: scale(1);
+}
+
+p {
+  font-family: "Nunito sans";
+  color: var(--terciary-color);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.checked {
   text-decoration: line-through;
-} */
+  opacity: 0.9;
+}
