@@ -8,15 +8,24 @@
   </head>
   <body>
     <header>
-      <h1>🐸 To Do list</h1>
       <button id="close-window">
         <img src="img/close-window.png" alt="close window" />
       </button>
-      <div class="animation-container"></div>
+      <button id="minimize-window">
+        <img src="img/minimize-window.png" alt="minimize window" />
+      </button>
+      <h1><span>Froggy's </span>to do list</h1>
+      <hr />
+      <div class="animation-container">
+        <div class="sprite principal" id="sprite"></div>
+        <!-- <div class="sprite jump" id="sprite-jump"></div>
+        <div class="sprite sleepy"></div> -->
+        <!-- <img src="img/sapo 8 bit.png" alt="" id="froggy"/> -->
+      </div>
     </header>
     <main>
       <div class="add-task-container">
-        <input type="text" id="input-task" placeholder="..." />
+        <input type="text" id="input-task" placeholder="   ..." />
         <button class="btn" id="btn-add">
           <img src="img/plus-icon.png" alt="add task" />
         </button>

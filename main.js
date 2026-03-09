@@ -1,10 +1,11 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
+let win;
 
 function createWindow() {
-  const win = new BrowserWindow({
-    width: 320,
-    height: 480,
+  win = new BrowserWindow({
+    width: 420,
+    height: 680,
     resizable: false,
     frame: false,
     fullscreenable: false,
@@ -19,7 +20,13 @@ function createWindow() {
 }
 
 ipcMain.on("encerra-app", () => {
-  app.quit();
+  app.exit(0);
+});
+
+ipcMain.on("minimiza-app", () => {
+  if (win) {
+    win.minimize();
+  }
 });
 
 app.whenReady().then(() => {
@@ -32,4 +39,4 @@ app.whenReady().then(() => {
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
-})
+});

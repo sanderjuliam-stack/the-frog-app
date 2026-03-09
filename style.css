@@ -7,10 +7,11 @@
 
 :root {
   --primary-color: #4f6f52;
-  --task-color: #909e90;
   --secondary-color: #1e2a23;
   --terciary-color: #333333;
-  --text-color: #e6efe8;
+  --task-color: #909e90;
+  --h1-color: #e6efe8;
+  --test-color: #97a79a;
 }
 
 @font-face {
@@ -19,9 +20,11 @@
 }
 
 body {
-  height: 480px;
+  height: auto;
   background-color: var(--primary-color);
   font-family: "Nunito sans";
+  padding: 6px;
+  /* border: 6px solid var(--secondary-color); */
 }
 
 header {
@@ -31,52 +34,125 @@ header {
 }
 
 h1 {
-  color: var(--text-color);
+  display: block;
+  color: var(--h1-color);
   font-size: 32px;
+  font-weight: 700;
   text-align: center;
 }
 
+hr {
+  width: 160px;
+  height: 4px;
+  margin: 0 auto;
+  border: none;
+  color: var(--h1-color);
+  background-color: var(--h1-color);
+  border-radius: 2px;
+}
+
 #close-window {
-  position: absolute;
-  top: 0;
-  right: 0;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+#minimize-window {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
 }
 
 .animation-container {
-  height: 180px;
-  width: 300px;
-  margin: 10px auto;
+  height: 192px;
+  width: 380px;
+  margin: 12px auto;
   border-radius: 16px;
-  background-color: #333333;
+  border: 3px solid var(--secondary-color);
+  background-image: url(img/animation-background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto 96px;
+}
+
+.principal {
+  width: 120px;
+  height: 96px;
+  grid-column: 2;
+  grid-row: 2;
+  background-image: url("img/sprite-normal.png");
+  background-repeat: no-repeat;
+  animation: principal 2.6s steps(13) infinite;
+}
+
+@keyframes principal {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -1560px;
+  }
+}
+
+.jump {
+  width: 120px;
+  height: 192px;
+  grid-column: 2;
+  grid-row: 1 2;
+  background-image: url("img/sprite-jump.png");
+  background-repeat: no-repeat;
+  animation: jump 1.2s steps(14) 1;
+}
+
+@keyframes jump {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -1680px;
+  }
 }
 
 button,
 input {
   -webkit-app-region: no-drag;
   user-select: auto;
-  display: inline-block;
   background: transparent;
   border: none;
+}
+
+#input-task,
+.input-element {
+  outline: none;
+  font-family: "Nunito sans";
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--terciary-color);
+  background-color: var(--task-color);
+  border-radius: 8px;
 }
 
 .add-task-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0 10px;
+  margin: 0 16px 10px;
+}
+
+#btn-add {
+  width: 50px;
+  height: 50px;
+  margin-left: 5px;
 }
 
 #input-task {
-  outline: none;
-  width: 248px;
+  width: 325px;
   height: 50px;
-  font-family: "Nunito sans";
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--terciary-color);
-  background-color: var(--task-color);
-  border-radius: 8px;
-  padding: 4px;
+  border: 2px dashed var(--secondary-color);
+  padding: 6px;
+  background-color: var(--h1-color);
 }
 
 ul {
@@ -92,9 +168,10 @@ ul {
 }
 
 .task-container {
-  width: 300px;
+  width: 380px;
   height: 60px;
   border-radius: 16px;
+  border: 1px solid var(--secondary-color);
   background-color: var(--task-color);
   padding: 5px;
   margin-bottom: 5px;
@@ -102,9 +179,6 @@ ul {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* transition:
-    opacity 0.3s ease,
-    transform 0.3s ease; */
 }
 
 .checkbox-container {
@@ -142,12 +216,35 @@ ul {
 
 p {
   font-family: "Nunito sans";
+  font-weight: 300;
   color: var(--terciary-color);
-  font-weight: 700;
   font-size: 20px;
 }
 
 .checked {
   text-decoration: line-through;
   opacity: 0.9;
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+  height: 10px;
+}
+
+/* O "trilho" da barra de rolagem (fundo) */
+::-webkit-scrollbar-track {
+  background: var(--secondary-color);
+  border-radius: 16px;
+}
+
+/* A "barrinha" (o que se move) */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 16px;
+  border: 3px dashed var(--task-color);
+}
+
+/* A barrinha ao passar o mouse */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--task-color);
 }

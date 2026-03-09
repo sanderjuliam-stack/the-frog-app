@@ -1,13 +1,18 @@
 let froggyToDo = JSON.parse(localStorage.getItem("froggyToDo")) || [];
 const btnClose = document.getElementById("close-window");
+const btnMinimize = document.getElementById("minimize-window") ;
 const btnAdd = document.getElementById("btn-add");
 const inputTask = document.getElementById("input-task");
 const taskList = document.getElementById("task-list");
-
+const checkbox = document.getElementsByClassName(".input-checkbox")
+const sprite = document.getElementById("sprite");
 
 document.addEventListener('DOMContentLoaded', () => {
     btnClose.addEventListener('click', () => {
         window.api.encerrarApp();
+    });
+    btnMinimize.addEventListener('click', () => {
+        window.api.minimizaApp();
     });
     btnAdd.addEventListener('click', () => {
         addTask();
@@ -47,17 +52,47 @@ function displayTasks() {
                     <img src="img/check.png" alt="checked" />
                 </label>            
             </div>
-            <p id='p-${index}' class="${item.check ? 'checked' : ''}" onclick="editTask(${index})">${item.text}<p/>
+            <p id='p-${index}' class="${item.check ? 'checked' : ''}" onclick="editTask(${index})">${item.text}</p>
             <button class="btn-delete" onclick="deleteTask(${index})">
                 <img src="img/delete-icon.png" alt="delete task" />
             </button>
         `;
         taskContainer.querySelector(".input-checkbox").addEventListener('change', () => {
             toggleTask(index);
-        })
+            if (item.check === true) {
+                sprite.classList.remove('principal');
+                sprite.classList.add('jump');
+            }
+        });
         taskList.appendChild(taskContainer);
     });
+    sprite.addEventListener('animationend', () => {
+        sprite.classList.remove('jump');
+        sprite.classList.add('principal');
+    })
 }; 
+
+// checkbox.addEventListener('change', function animationJump() => {
+//     if (checkbox.checked) {
+//     sprite.classList.remove("principal");
+//     sprite.classList.add("jump");
+//     }
+//     sprite.addEventListener("animationend", () => {
+//     sprite.classList.remove("jump");
+//     sprite.classList.add("principal");
+//     });
+// });
+
+// function animationJump() {
+//     if (checkbox.checked) {
+//     sprite.classList.remove("principal");
+//     sprite.classList.add("jump");
+//     }
+//     sprite.addEventListener("animationend", () => {
+//     sprite.classList.remove("jump");
+//     sprite.classList.add("principal");
+// });
+// };
 
 function editTask(index) {
   const taskToEdit = document.getElementById(`p-${index}`);
@@ -87,6 +122,8 @@ function deleteTask(index) {
 
 function toggleTask(index) {
     froggyToDo[index].check = !froggyToDo[index].check;
+    const p = document.getElementById(`p-${index}`);
+    p.classList.toggle('checked');
     saveInLocalStorage();
     displayTasks();
 };
@@ -94,85 +131,3 @@ function toggleTask(index) {
 function saveInLocalStorage () {
     localStorage.setItem("froggyToDo", JSON.stringify(froggyToDo));
 };
-
-
-
-
-
-// // 1. Função isolada para criar o elemento (usada pelo botão e pelo load)
-// function createTaskElement(texto = "", concluida = false) {
-//     const taskId = `task-${Date.now()}`;
-//     const container = document.createElement('div');
-//     container.className = 'task-container';
-    
-//     container.innerHTML = `
-//     <li>
-//       <div class="checkbox-container">
-//         <input type="checkbox" id="${taskId}" ${concluida ? 'checked' : ''} />
-//         <label for="${taskId}" class="label-task">
-//           <img src="img/check.png" alt="checked" />
-//         </label>
-//       </div>
-//       <input type="text" class="text-input" maxlength="15" value="${texto}" />
-//       <button class="btn-delete">
-//         <img src="img/delete-icon.png" alt="delete task" />
-//       </button>
-//     </li>
-//     `;
-
-//     // Adiciona evento de salvar sempre que o texto mudar ou o checkbox for clicado
-//     container.querySelector('.text-input').addEventListener('input', salvarTarefas);
-//     container.querySelector('input[type="checkbox"]').addEventListener('change', salvarTarefas);
-
-//     taskList.appendChild(container);
-//     return container;
-// }
-
-// // 2. Salvar no LocalStorage
-// function salvarTarefas() {
-//     const tarefas = [];
-//     const containers = document.querySelectorAll('.task-container');
-
-//     containers.forEach(container => {
-//         const input = container.querySelector('.text-input');
-//         const checkbox = container.querySelector('input[type="checkbox"]');
-        
-//         tarefas.push({
-//             texto: input.value,
-//             concluida: checkbox.checked
-//         });
-//     });
-//     localStorage.setItem('minhas-tarefas-sapinho', JSON.stringify(tarefas));
-// }
-
-// // 3. Carregar ao iniciar
-// function carregarTarefas() {
-//     const dados = localStorage.getItem('minhas-tarefas-sapinho');
-//     if (!dados) return;
-
-//     const tarefas = JSON.parse(dados);
-//     tarefas.forEach(tarefa => {
-//         createTaskElement(tarefa.texto, tarefa.concluida);
-//     });
-// }
-
-// // --- Eventos ---
-
-// btnAdd.addEventListener('click', () => {
-//     createTaskElement();
-//     salvarTarefas();
-// });
-
-// taskList.addEventListener('click', (event) => {
-//     // Ajustado para .btn-delete (conforme seu HTML)
-//     const btnDelete = event.target.closest('.btn-delete');
-
-//     if (btnDelete) {
-//         const containerToRemove = btnDelete.closest('.task-container');
-//         containerToRemove.remove();
-//         salvarTarefas(); 
-//     }
-// });
-
-// // Inicialização
-// carregarTarefas();
