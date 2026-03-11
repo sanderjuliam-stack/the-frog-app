@@ -1,10 +1,11 @@
 let froggyToDo = JSON.parse(localStorage.getItem("froggyToDo")) || [];
+
 const btnClose = document.getElementById("close-window");
 const btnMinimize = document.getElementById("minimize-window") ;
 const btnAdd = document.getElementById("btn-add");
 const inputTask = document.getElementById("input-task");
 const taskList = document.getElementById("task-list");
-const checkbox = document.getElementsByClassName(".input-checkbox")
+const checkbox = document.getElementsByClassName("input-checkbox");
 const sprite = document.getElementById("sprite");
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -34,7 +35,7 @@ function addTask () {
             check: false
         });
         saveInLocalStorage();
-        inputTask.value = "";
+        inputTask.value = '';
         displayTasks();
     }
 };
@@ -47,52 +48,22 @@ function displayTasks() {
         taskContainer.innerHTML = 
         `
             <div class="checkbox-container">
-                <input type="checkbox" class='input-checkbox' id='input-${index}' ${item.check ? 'checked' : ''} />
+                <input type="checkbox" class="input-checkbox" id="input-${index}" ${item.check ? 'checked' : ''} />
                 <label for="input-${index}" class="label-task">
                     <img src="img/check.png" alt="checked" />
                 </label>            
             </div>
-            <p id='p-${index}' class="${item.check ? 'checked' : ''}" onclick="editTask(${index})">${item.text}</p>
+            <p id="p-${index}" class="${item.check ? 'checked' : ''}" onclick="editTask(${index})">${item.text}</p>
             <button class="btn-delete" onclick="deleteTask(${index})">
                 <img src="img/delete-icon.png" alt="delete task" />
             </button>
         `;
-        taskContainer.querySelector(".input-checkbox").addEventListener('change', () => {
+        taskContainer.querySelector('.input-checkbox').addEventListener('change', () => {
             toggleTask(index);
-            if (item.check === true) {
-                sprite.classList.remove('principal');
-                sprite.classList.add('jump');
-            }
         });
         taskList.appendChild(taskContainer);
     });
-    sprite.addEventListener('animationend', () => {
-        sprite.classList.remove('jump');
-        sprite.classList.add('principal');
-    })
 }; 
-
-// checkbox.addEventListener('change', function animationJump() => {
-//     if (checkbox.checked) {
-//     sprite.classList.remove("principal");
-//     sprite.classList.add("jump");
-//     }
-//     sprite.addEventListener("animationend", () => {
-//     sprite.classList.remove("jump");
-//     sprite.classList.add("principal");
-//     });
-// });
-
-// function animationJump() {
-//     if (checkbox.checked) {
-//     sprite.classList.remove("principal");
-//     sprite.classList.add("jump");
-//     }
-//     sprite.addEventListener("animationend", () => {
-//     sprite.classList.remove("jump");
-//     sprite.classList.add("principal");
-// });
-// };
 
 function editTask(index) {
   const taskToEdit = document.getElementById(`p-${index}`);
@@ -122,12 +93,23 @@ function deleteTask(index) {
 
 function toggleTask(index) {
     froggyToDo[index].check = !froggyToDo[index].check;
-    const p = document.getElementById(`p-${index}`);
-    p.classList.toggle('checked');
+    if (froggyToDo[index].check === true) {
+        triggerJump()
+    };
     saveInLocalStorage();
     displayTasks();
 };
 
+function triggerJump (){
+    sprite.classList.remove('principal');
+    sprite.classList.add('jump');
+
+    sprite.addEventListener('animationend', () => {
+        sprite.classList.remove('jump');
+        sprite.classList.add('principal');
+    });
+};
+
 function saveInLocalStorage () {
-    localStorage.setItem("froggyToDo", JSON.stringify(froggyToDo));
+    localStorage.setItem('froggyToDo', JSON.stringify(froggyToDo));
 };

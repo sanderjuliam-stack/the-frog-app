@@ -11,20 +11,17 @@
   --terciary-color: #333333;
   --task-color: #909e90;
   --h1-color: #e6efe8;
-  --test-color: #97a79a;
 }
 
 @font-face {
   font-family: "Nunito sans";
-  src: url(font/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf);
+  src: url(font/NunitoSans.ttf);
 }
 
 body {
-  height: auto;
   background-color: var(--primary-color);
   font-family: "Nunito sans";
   padding: 6px;
-  /* border: 6px solid var(--secondary-color); */
 }
 
 header {
@@ -42,7 +39,7 @@ h1 {
 }
 
 hr {
-  width: 160px;
+  width: 270px;
   height: 4px;
   margin: 0 auto;
   border: none;
@@ -51,12 +48,7 @@ hr {
   border-radius: 2px;
 }
 
-#close-window {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-}
-
+#close-window,
 #minimize-window {
   display: inline-block;
   width: 24px;
@@ -156,6 +148,10 @@ input {
 }
 
 ul {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: flex-end;
   list-style: none;
 }
 
@@ -207,7 +203,6 @@ ul {
   width: 48px;
   height: 48px;
   transform: scale(0);
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .input-checkbox:checked + .label-task img {
@@ -215,7 +210,6 @@ ul {
 }
 
 p {
-  font-family: "Nunito sans";
   font-weight: 300;
   color: var(--terciary-color);
   font-size: 20px;
@@ -231,20 +225,17 @@ p {
   height: 10px;
 }
 
-/* O "trilho" da barra de rolagem (fundo) */
 ::-webkit-scrollbar-track {
   background: var(--secondary-color);
   border-radius: 16px;
 }
 
-/* A "barrinha" (o que se move) */
 ::-webkit-scrollbar-thumb {
   background: var(--primary-color);
   border-radius: 16px;
   border: 3px dashed var(--task-color);
 }
 
-/* A barrinha ao passar o mouse */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--task-color);
 }
